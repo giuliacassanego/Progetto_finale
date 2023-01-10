@@ -6,18 +6,21 @@
 class Player
 {
 private:
-//stato turno: gioca/in attesa
+	int num_corazzate;
+	int num_support;
+	int num_explorer;
 
 	
 public:
-	const int num_corazzate = 3;
-	const int num_support = 3;
-	const int num_explorer = 2;
 	Player();
-	//fare azione
-	//passare turno
+	
+	//member functions
+	void setCor(int n);
+	void setSup(int n);
+	void setExp(int n);
+	int getCor();
+	int getSup();
+	int getExp();
 };
-
-
 
 #endif
