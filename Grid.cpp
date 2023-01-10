@@ -98,7 +98,7 @@ void Grid::setAttack(int i, int j, char c)
 {
 	if(nave.sink)
 	{
-		nave.posizione = ' ';
+		nave.setDefense(i, j, ' ');
 	}
 }*/
 
@@ -108,9 +108,9 @@ void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 	{
 		for(int j = 0; j < 12; j++)
 		{
-			if(attack[i][j] == 'Y')
+			if(getAttack(i,j) == 'Y')
 			{
-				attack[i][j] = ' ';
+				setAttack(i, j, 'Y');
 			}
 		}
 	}
