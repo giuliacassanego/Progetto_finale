@@ -108,9 +108,9 @@ void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 	{
 		for(int j = 0; j < 12; j++)
 		{
-			if(getAttack(i,j) == 'Y')
+			if(attack[i][j] == 'Y')
 			{
-				setAttack(i, j, 'Y');
+				attack[i][j] = 'Y';
 			}
 		}
 	}
@@ -140,6 +140,6 @@ ostream& operator<< (ostream& os, Grid grid)
 		os << endl;	// << "-------------" << endl;
 	}
 	
-	return os;	//not sure
+	return os;
 }
 
