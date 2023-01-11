@@ -1,7 +1,7 @@
 //Cassanego Giulia
 
 #include <ostream>
-#include <stdexcept>
+#include <stdio.h>
 
 #include "Grid.h"
 
@@ -20,18 +20,20 @@ Grid::Grid()
 	
 	//numeri
 	c = 49;
-	for (int i = 1; i < 13; i ++)
-	{
-		//while (c < 58)
-		//{
-			defense[i][12] = c;	//ultima riga
-			attack[i][12] = c;
-			c++;
-		//}
-		//defense[i][12] = c - 48;	//ultima riga
-		//attack[i][12] = c - 48;
-		//c++;
-	}
+    int i =1;
+    while (c < 58)
+    {
+        defense[i][12] = c;	//ultima riga
+        attack[i][12] = c;
+        c++;
+        i++;
+    }
+    defense[10][12] = "10";
+    attack[10][12] = "10";
+    defense[11][12] = "11";
+    attack[11][12] = "11";
+    defense[12][12] = "12";
+    attack[12][12] = "12";
 	
 	//all'inizio tutti spazi
 	for(int i = 1; i < 13; i++)
@@ -47,12 +49,12 @@ Grid::Grid()
 	attack[0][12] = ' ';
 }
 
-char Grid::getDefense(int i, int j)
+string Grid::getDefense(int i, int j)
 {
 	return defense[i][j];
 }
 
-char Grid::getAttack(int i, int j)
+string Grid::getAttack(int i, int j)
 {
 	return attack[i][j];
 }
@@ -61,7 +63,7 @@ void Grid::setDefense(int i, int j, char c)
 {
 	if (c != 67 && c != 69 && c != 83)	//C, E, S
 	{
-		throw std::invalid_argument("Invalid letter");
+		throw invalid_argument("error: Invalid letter entered"); 
 	}
 	defense[i][j] = c;
 }
@@ -70,27 +72,72 @@ void Grid::setAttack(int i, int j, char c)
 {
 	if (c != 79 && c != 88 && c != 89)	//O, X, Y
 	{
-		throw std::invalid_argument("Invalid letter");
+		throw invalid_argument("error: Invalid letter entered"); 
 	}
 	attack[i][j] = c;
 }
 
-void Grid::position(String s)
+int Grid::convert(string c)
 {
-	char j = s.substr(0, 1);	//lettera
-	int i = (int)s.substr(1, 1);	//numero
-	switch(j)
-	{
-		case 1:
-			
-	}
+    int n;
+    if(c == "A" || c== "a")
+    {
+        n =1;
+    }
+    else if(c == "B" || c== "b")
+    {
+        n =2;
+    }
+    else if(c == "C" || c== "c")
+    {
+        n =3;
+    }
+    else if(c == "D" || c== "d")
+    {
+        n =4;
+    }
+    else if(c == "E" || c== "e")
+    {
+        n =5;
+    }
+    else if(c == "F" || c== "f")
+    {
+        n =6;
+    }
+    else if(c == "G" || c== "g")
+    {
+        n =7;
+    }
+    else if(c == "H" || c== "h")
+    {
+        n =8;
+    }
+    else if(c == "I" || c== "i")
+    {
+        n =9;
+    }
+    else if(c == "L" || c== "l")
+    {
+        n =10;
+    }
+    else if(c == "M" || c== "m")
+    {
+        n =11;
+    }
+    else if(c == "N" || c== "n")
+    {
+        n =12;
+    }
+    return n;
+
 }
+
+
 
 /*void Grid::insert(unità, int i, int j)
 {
 	if(unità == corazzata)
 	{
-		if(i > 2)
 		for(index = i - 2; index <= i + 2; index++)
 			setDefense(i, j, C);
 	}
@@ -107,13 +154,17 @@ void Grid::position(String s)
 	}
 }*/
 
-/*void Grid::clear()
+
+/*
+void Grid::clear()
 {
-	if(nave.sink)
+    
+    if(nave.sink)
 	{
-		nave.posizione = ' ';
+		nave.setDefense(i, j, ' ');
 	}
-}*/
+}
+ * */
 
 void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 {
@@ -121,9 +172,9 @@ void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 	{
 		for(int j = 0; j < 12; j++)
 		{
-			if(attack[i][j] == 'Y')
+			if(attack[i][j] == "Y")
 			{
-				attack[i][j] = ' ';
+				attack[i][j] = "Y";
 			}
 		}
 	}
@@ -153,6 +204,7 @@ ostream& operator<< (ostream& os, Grid grid)
 		os << endl;	// << "-------------" << endl;
 	}
 	
-	return os << endl;
+	return os;
 }
+
 
