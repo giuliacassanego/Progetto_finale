@@ -16,7 +16,8 @@ private:
     
     void scan(string center);
     void shift(string destination);
-    
+        
+int getShield();
 
 };
 
