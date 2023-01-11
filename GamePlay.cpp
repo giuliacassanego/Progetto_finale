@@ -1,18 +1,22 @@
 //Angelica Zonta 2032570
 
-#include "GamePlay.h"
+#ifndef GAMEPLAY_HPP
+#define GAMEPLAY_HPP
 
+#include "GamePlay.h"
+#include "Player.h"
+#include "Grid.h"
+#include "Computer.h"
 
 #include <cstdlib>
 #include <ctime>
 
-GamePlay::GamePlay(){}
-
-/*GamePlay::~GamePlay()
+GamePlay::GamePlay()
 {
+    Computer player1("player1");
+    Player player2("player2");
 }
- * */
- 
+
 int GamePlay::start()
 {
     srand(time(NULL));
@@ -20,23 +24,49 @@ int GamePlay::start()
     return n;
 }
 
-
-//lo utilizzo nel main dentro ad un ciclo whiledove controllo che finche win != true, mi continua a giocare
-void GamePlay::checkWin()
+/*
+void GamePlay::posInizialeUnitAtt(std::string s, char c)
 {
-    if(//"inseriscoil noe della varibaile quantita" ==0)
+    while(s.hasNextLine())
     {
-        win = true;
+        //se inserisco il comando con una lettera, come faccio a trasformarla in int?
     }
-    return;
+    Grid::setAttack(int i, int j, char c);
+}
+ * */
+
+Player::Player GamePlay::getPlayer1()
+{
+    return player1;
 }
 
-void GamePlay::playAction(//nome oggetto che deve eseguire il gioco)
+Player::Player GamePlay::getPlayer2()
+{
+    return player2;
+}
+
+
+int GamePlay::calcShield(Player p)
+{
+    return (p.corazzata1.getshield() + p.corazzata2.getshield()+p.corazzata2.getshield() + p.sottomarino1.getShield() + p.sottomarino2.getshield() + p.nave1.getshield() + p.nave2.getShield() + p.nave3.getShield());
+}
+
+void GamePlay::checkWin(Player p1, Player p2)
+{    
+    if(calcShield(p1) > calcShield(p2))
+    {
+        p1.hasWin();
+    }
+    else{
+        p2.hasWin();
+    }
+}
+
+/*
+void GamePlay::playAction(Player::Player p)
 {
     
 }
+ * */
 
-bool GamePlay::isHit()
-{
-    if(
-}
+#endif // GAMEPLAY_HPP
