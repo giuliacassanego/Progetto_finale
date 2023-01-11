@@ -16,7 +16,7 @@ private:
     
     void repair(string center);
     void shift(string center, string destination);
-
+    int getShield();
 };
 
 #endif // NAVESUPPORTO_H
