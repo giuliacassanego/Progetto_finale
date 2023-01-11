@@ -2,17 +2,19 @@
 #define CORAZZATA_H
 
 #include <vector>
-
+using namespace std;
 class Corazzata
 {
 public:
-    Corazzata();
+    Corazzata(std::string n);
     ~Corazzata();
 
 private:
 int space;
 int shield;
-    void fire(std::string origin, std::string target);
+string name;
+
+void fire(std::string origin, std::string target);
     
 
 };
