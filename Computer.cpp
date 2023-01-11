@@ -1,34 +1,63 @@
 //Angelica Zonta 2032570
 
 #include "Computer.h"
-\
-Computer::Computer(){}
+#include "Player.h"
+#include <iostream>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-/*Computer::~Computer()
+Computer::Computer()
 {
-    
+    Player player1;
 }
- * */
- 
-int Computer::randomChoseNavalUnit()
+
+char Computer::randomChoseNavalUnit()
 {
     srand(time(NULL));
     int n = rand()%3+1; //numero casuale da 1 a 3
-    return n;
+    char navalUnit;
+    if(n==1)
+    {
+        navalUnit = 'C';
+    }
+    else if(n==2)
+    {
+        navalUnit = 'S';
+    }
+    else if(n==3)
+    {
+        navalUnit = 'E';
+    }
+    return navalUnit;
 }
 
-std::string Computer::randomChosePosition()
+int Computer::randomChosePositionLett()
 {
-    std::string s;
     srand(time(NULL));
     
-    char pos =rand()%78+65; //scelgo una lettera casulamente con codice ascii: da A a N;;
-   
+    bool correctLett = false; 
+    int pos;
+    while(correctLett != true)
+    {
+        pos =rand()%78+65; //scelgo una lettera casulamente con codice ascii: da A a N;
+        if(pos != 74 && pos != 75)//controllo che non escano le lettere K e J
+        {
+            correctLett=true;
+        }
+    }
+    return pos;
     
+}
+
+int Computer::randomChosePositionNum()
+{
+    
+    std::string s;
+    srand(time(NULL));
     int n = rand()%12+1; ///scelto la posizione nella griglia da 1 a 12
-    s = pos+n;
-    return s;
-       
+    return n;
+   
 }
 
 
