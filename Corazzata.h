@@ -2,7 +2,7 @@
 #define CORAZZATA_H
 
 #include <vector>
-using namespace std;
+
 class Corazzata
 {
 public:
@@ -12,7 +12,7 @@ public:
 private:
 int space;
 int shield;
-string name;
+std::string name;
 
 void fire(std::string origin, std::string target);
     
