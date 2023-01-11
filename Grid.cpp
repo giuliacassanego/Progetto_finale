@@ -1,6 +1,7 @@
 //Cassanego Giulia
 
 #include <ostream>
+#include <stdexcept>
 
 #include "Grid.h"
 
@@ -60,7 +61,7 @@ void Grid::setDefense(int i, int j, char c)
 {
 	if (c != 67 && c != 69 && c != 83)	//C, E, S
 	{
-		cout << "error: Valore inserito non trovato";
+		throw std::invalid_argument("Invalid letter");
 	}
 	defense[i][j] = c;
 }
@@ -69,15 +70,27 @@ void Grid::setAttack(int i, int j, char c)
 {
 	if (c != 79 && c != 88 && c != 89)	//O, X, Y
 	{
-		cout << "error: Valore inserito non trovato";
+		throw std::invalid_argument("Invalid letter");
 	}
 	attack[i][j] = c;
+}
+
+void Grid::position(String s)
+{
+	char j = s.substr(0, 1);	//lettera
+	int i = (int)s.substr(1, 1);	//numero
+	switch(j)
+	{
+		case 1:
+			
+	}
 }
 
 /*void Grid::insert(unità, int i, int j)
 {
 	if(unità == corazzata)
 	{
+		if(i > 2)
 		for(index = i - 2; index <= i + 2; index++)
 			setDefense(i, j, C);
 	}
@@ -98,7 +111,7 @@ void Grid::setAttack(int i, int j, char c)
 {
 	if(nave.sink)
 	{
-		nave.setDefense(i, j, ' ');
+		nave.posizione = ' ';
 	}
 }*/
 
@@ -110,7 +123,7 @@ void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 		{
 			if(attack[i][j] == 'Y')
 			{
-				attack[i][j] = 'Y';
+				attack[i][j] = ' ';
 			}
 		}
 	}
@@ -140,6 +153,6 @@ ostream& operator<< (ostream& os, Grid grid)
 		os << endl;	// << "-------------" << endl;
 	}
 	
-	return os;
+	return os << endl;
 }
 
