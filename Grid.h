@@ -4,30 +4,27 @@
 #define GRID_H
 
 #include <iostream>
+using namespace std;
 
 class Grid
 {
 private:
-	char defense[13][13];
-	char attack[13][13];
-	
-	
+	string defense[13][13];
+	string attack[13][13];
+
 public:
 	Grid();
-	
-	//member functions
-	char getDefense(int i, int j);
-	char getAttack(int i, int j);	//da capire se entrambi e se con i, j
+	string getDefense(int i, int j);
+	string getAttack(int i, int j);	//da capire se entrambi e se con i, j
 	void setDefense(int i, int j, char c);
 	void setAttack(int i, int j, char c);
+    int convert(string c);
 	
-	void position(String s);
 //	void insert(unità, int i, int j); //fare con template(?) per gestire diversi tipi unità
 //	void clear();
 	void deleteSonar();
 };
 
-//helper function
 std::ostream& operator<< (std::ostream& os, Grid grid);
 
-#endif 
+#endif
