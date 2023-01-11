@@ -1,11 +1,12 @@
 #include "Corazzata.h"
 #include "Grid.h"
+#include "Player.h"
+#include "GamePlay.h"
 #include <cctype>
 #include <cstring>
 #include <iostream>
 
-
-Corazzata::Corazzata(std::string n)
+Corazzata::Corazzata(string n)
 {
     space = 5;
     shield = space;
@@ -17,25 +18,41 @@ Corazzata::~Corazzata()
 }
 
 
-void Corazzata::fire(std::string origin, std::string target)
+void Corazzata::fire(string origin, string target)
 {
-    int c = (int) Grid::convert(target.substr(0,1));
+    string s = target.substr(0,1);
+    int c = convert(s);
     int r = (int) target.substr(1);
     
     if(this ->name == "player1")
     {
-        if(player2.getGrid.getAttack[c][r] != ' ')
+        if(getPlayer2.getAttack(c,r) != ' ')
         {
-            player2.getGrid.getAttack[c][r] = (char)tolower(player2.getGrid.getAttack[c][r]);
+            GamePlay.getPlayer2.getGrid.setDefense(c, r, 'c');
+            player1.getGrid.setAttack(c, r, 'X');
+            player1.hasHit();
+            checkAffondato();
         }
     }
     else if(this ->name == "player2")
     {
-        if(player1.getGrid.getAttack[c][r] != ' ')
+        if(player1.getGrid.getAttack(c, r) != ' ')
         {
-            player1.getGrid.getAttack[c][r] = (char)tolower(player2.getGrid.getAttack[c][r]);
+            player1.getGrid.getAttack(c, r) = (char)tolower(player2.getGrid.getAttack[c][r]);
         }
     }
 }
 
+void Corazzata::checkAffondato()
+{
+    if(this.getShield() ==0)
+    {
+        std::cout <<"ciao";//da finire
+        //da richiamare il distruttore degli oggetti
+    }
+}
+
+int Corazzata::getShield()
+{
+    return shield;
 }
