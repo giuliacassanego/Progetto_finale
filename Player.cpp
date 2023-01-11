@@ -3,19 +3,53 @@
 #include <stdexcept>
 
 #include "Player.h"
+#include "Grid.h"
+#include "Corazzata.h"
+#include "NaveSupporto.h"
+#include "SottoMarino.h"
 
-Player::Player()
+using namespace std;
+
+Player::Player(string n)
 {
-	num_corazzate = 3;
-	num_support = 3;
-	num_explorer = 2;
+    hits=0; 
+    win = false;
+    
+    Corazzata corazzata1(n);
+    Corazzata corazzata2(n);
+    Corazzata corazzata3(n);
+    
+    NaveSupporto nave1(n);
+    NaveSupporto nave2(n);
+    NaveSupporto nave3(n);
+    
+    Sottomarino sottomarino1(n);
+    Sottomarino sottomarino2(n);
+    
+    Grid grid1;
+    
+}
+
+void Player::hasHit()
+{
+    hits++;
+}
+
+int Player::getHits()
+{
+    return hits;
+}
+
+void Player::hasWin()
+{
+    win = true;
 }
 
 void Player::setCor(int n)
 {
 	if (n > 3)	//3 o 4?
 	{
-		throw std::invalid_argument("Invalid number");
+		throw invalid_argument("Invalid number");
 	}
 	num_corazzate = n;
 }
@@ -24,7 +58,7 @@ void Player::setSup(int n)
 {
 	if (n > 3)
 	{
-		throw std::invalid_argument("Invalid number");
+		throw invalid_argument("Invalid number");
 	}
 	num_support = n;
 }
@@ -33,7 +67,7 @@ void Player::setExp(int n)
 {
 	if (n > 2)
 	{
-		throw std::invalid_argument("Invalid number");
+		throw invalid_argument("Invalid number");
 	}
 	num_explorer = n;
 }
