@@ -17,6 +17,11 @@ NaveSupporto::~NaveSupporto()
 {
 }
 
+int NaveSupporto::getShield()
+{
+    return shield;
+}
+
 void NaveSupporto::repair(string center)//capire il return come farlo-grosso problema :), risolto sono un genio
 {
     int c = (int) Grid::convert(center.substr(0,1));
