@@ -1,14 +1,13 @@
 //Angelica Zonta 2032570
-
 #include "Computer.h"
 #include "Player.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 
-Computer::Computer()
+Computer::Computer(string s)
 {
-    Player player1;
+    Player player1(s);
 }
 
 char Computer::randomChoseNavalUnit()
@@ -31,6 +30,17 @@ char Computer::randomChoseNavalUnit()
     return navalUnit;
 }
 
+/*
+void Computer::prepareGrid()
+{
+    int  =1;
+    while(i<=3)
+    {
+        
+    }
+}
+ * */
+
 int Computer::randomChosePositionLett()
 {
     srand(time(NULL));
@@ -46,18 +56,17 @@ int Computer::randomChosePositionLett()
         }
     }
     return pos;
-    
 }
 
 int Computer::randomChosePositionNum()
 {
-    
     std::string s;
     srand(time(NULL));
     int n = rand()%12+1; ///scelto la posizione nella griglia da 1 a 12
     return n;
    
 }
+
 
 
 
