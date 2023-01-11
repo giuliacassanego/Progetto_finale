@@ -2,17 +2,19 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
+#include <iostream>
+
+using namespace std;
 
 class Player
 {
 private:
-	int num_corazzate;
-	int num_support;
-	int num_explorer;
+    int hits; //numero dei colpi andati a segno
+    bool win;
+       
 
-	
 public:
-	Player();
+	Player(string n);
 	
 	//member functions
 	void setCor(int n);
@@ -21,6 +23,9 @@ public:
 	int getCor();
 	int getSup();
 	int getExp();
+    void hasHit();
+    int getHits();
+    void hasWin();
 };
 
 #endif
