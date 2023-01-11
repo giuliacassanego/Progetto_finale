@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-Corazzata::Corazzata(string n)
+Corazzata::Corazzata(std::string n)
 {
     space = 5;
     shield = space;
