@@ -17,6 +17,11 @@ Sottomarino::~Sottomarino()
 {
 }
 
+int Sottomarino::getShield()
+{
+    return shield;
+}
+
 void Sottomarino::scan(string center)
 {
     int c = (int) Grid::convert(center.substr(0,1));
