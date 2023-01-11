@@ -4,7 +4,6 @@
 #include <cstring>
 #include <iostream>
 
-using namespace std;
 
 Corazzata::Corazzata(string n)
 {
