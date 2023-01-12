@@ -7,14 +7,20 @@
 
 Computer::Computer(string s)
 {
-    Player player1(s);
+    Player player(s);
+    grid;
 }
+
+Grid Computer::getGrid()
+{
+    return grid;
+}
+
 
 Player Computer::getPlayer()
 {
-    return player1;
+    return player;
 }
-
 char Computer::randomChoseNavalUnit()
 {
     srand(time(NULL));
@@ -67,7 +73,7 @@ void Computer::prepareGrid()
     while(corazzata<=3)
     {
         try{
-            this.getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'C');
+            this->getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'C');
             corazzata++;
         }
         catch(invalid_argument exception()){}
@@ -76,7 +82,7 @@ void Computer::prepareGrid()
     while(nave<=3)
     {
         try{
-            this.getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'S');
+            this ->getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'S');
             nave++;
         }
         catch(invalid_argument exception()){}
@@ -85,7 +91,7 @@ void Computer::prepareGrid()
     while(sottomarino <=2)
     {
         try{
-            this.getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'E');
+            this->getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'E');
             sottomarino++;
         }
         catch(invalid_argument exception()){}
