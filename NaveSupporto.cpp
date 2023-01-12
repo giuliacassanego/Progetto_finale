@@ -9,7 +9,7 @@ using namespace std;
 NaveSupporto::NaveSupporto(string n)
 {
     name = n;
-    space = 5;
+    space = 3;
     shield = space;
 }
 
