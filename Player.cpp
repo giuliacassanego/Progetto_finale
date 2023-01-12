@@ -51,6 +51,7 @@ void Player::hasWin()
     win = true;
 }
 
+/*
 void Player::setCor(int n)
 {
 	if (n > 3)	//3 o 4?
@@ -92,3 +93,4 @@ int Player::getExp()
 {
 	return num_explorer;
 }
+*/
