@@ -21,7 +21,7 @@ public:
     int convert(string c);
 	
 	void insert(unità, string bow, string stern); //fare con template(?) per gestire diversi tipi unità
-//	void clear();
+	void clear();
 	void deleteSonar();
 };
 

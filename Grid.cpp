@@ -146,84 +146,57 @@ void Grid::insert(unità, string bow, string stern)	//bow=prua, stern=poppa
 	{
 		for(int index = i; index < x; index++)
 		{
-			if(getDefense(index, j) == ' ')	//controllo sia libero
+			if(getDefense(index, j) == " ")	//controllo sia libero
 			{
-				setDefense(index, j, 'C');
+				setDefense(index, j, 'C');	//lettera unità
 			}
 			else
 			{
 				throw invalid_argument("error: Position already occupied");
 			}
 		}
-		//unità.center_i = (i + x)/2;
-		//unità.center_j = j;
+		unità.center_i = (i + x)/2;
+		unità.center_j = j;
 	}
 	else if(i == x)	//verticale
 	{
 		for(int index = j; index < y; index++)
 		{
-			if(getDefense(i, index) == ' ')
+			if(getDefense(i, index) == " ")
 			{
-				setDefense(i, index, 'C');
+				setDefense(i, index, 'C');	//lettera unità
 			}
 			else
 			{
 				throw invalid_argument("error: Position already occupied");
 			}
 		}
-		//unità.center_i = i;
-		//unità.center_j = (j + y)/2;
+		unità.center_i = i;
+		unità.center_j = (j + y)/2;
 	}
 	else
 	{
 		throw invalid_argument("error: Invalid position entered");
 	}
-	
-	/*
-	if(unità == corazzata)
-	{
-		for(index = i - 2; index <= i + 2; index++)
-			setDefense(i, j, 'C');
-	}
-	
-	if(unità == support)
-	{
-		for(index = i - 1; index <= i + 1; index++)
-			setDefense(i, j, 'S');
-	}
-	
-	if(unità == explorer)
-	{
-		setDefense(i, j, 'E');
-	}*/
 }
 
-
-/*
 void Grid::clear()
 {
 	if(unità == explorer)
 	{
 		setDefense(center_i, center_j, ' ');
 	}
-	else if(getDefense(center_i + 1, center_j) == ' ')	//nave verticale
+	else if(getDefense(center_i + 1, center_j) == " ")	//nave verticale
 	{
-		for(index = center_j - 2; index <= center + 2; index++)
-			setAttack(i, j, ' ');
+		for(int index = center_j - ((space-1)/2); index <= center_j + ((space-1)/2); index++)
+			setDefense(center_i, index, ' ');
 	}
-	
-	if(unità == support)
+	else if(getDefense(center_i, center_j + 1) == " ")	//nave orizzontale
 	{
-		for(index = center - 1; index <= center + 1; index++)
-			setAttack(i, j, ' ');
-	}
-	
-	if(unità == explorer)
-	{
-		setAttack(i, j, ' ');
+		for(int index = center_i - ((space-1)/2); index <= center_i + ((space-1)/2); index++)
+			setDefense(index, center_j, ' ');
 	}
 }
- */
 
 void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 {
