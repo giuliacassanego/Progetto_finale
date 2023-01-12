@@ -1,21 +1,30 @@
 //Angelica Zonta 2032570
 
-#ifndef GAMEPLAY_HPP
-#define GAMEPLAY_HPP
-
 #include "GamePlay.h"
-#include "Player.h"
 #include "Grid.h"
 #include "Computer.h"
 
 #include <cstdlib>
 #include <ctime>
 
-GamePlay::GamePlay()
+GamePlay::GamePlay(Computer player1, Player player2)
 {
-    Computer player1("player1");
-    Player player2("player2");
+    player1 = player1("player1");
+    player2 = player2("player2");
 }
+
+GamePlay::GamePlay(Computer player1, Computer player2)
+{
+    player1 = player1("player1");
+    player2 = player2("player2");
+}
+
+/*
+~GamePlay() //distruttore che elimina oggetto creato alla fine edella partita
+{
+
+}
+*/
 
 int GamePlay::start()
 {
@@ -23,6 +32,7 @@ int GamePlay::start()
     int n = rand()%2+1; //numero casuale da 1 a 2
     return n;
 }
+
 
 /*
 void GamePlay::posInizialeUnitAtt(std::string s, char c)
@@ -69,4 +79,3 @@ void GamePlay::playAction(Player::Player p)
 }
  * */
 
-#endif // GAMEPLAY_HPP
