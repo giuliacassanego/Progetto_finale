@@ -134,6 +134,12 @@ int Grid::convert(string c)
     return n;
 }
 
+bool Grid::isFree(int i, int j)
+{
+	if(getDefense(i, j) == " ")
+		return true;
+}
+
 void Grid::insert(unità, string bow, string stern)	//bow=prua, stern=poppa
 {
 	int j = convert(bow.substr(0,1));	//lettera
@@ -142,11 +148,15 @@ void Grid::insert(unità, string bow, string stern)	//bow=prua, stern=poppa
 	int y = convert(stern.substr(0,1));
 	int x = stoi(stern.substr(1));
 	
-	if(j == y)	//orizzontale
+	if(i < 1 || x > 12 || j < 0 || y > 11 || (x-i) < 0 || (y-j) < 0)	//boundaries check
+	{
+		throw invalid_argument("error: Invalid position entered");
+	}
+	else if(j == y)	//orizzontale
 	{
 		for(int index = i; index < x; index++)
 		{
-			if(getDefense(index, j) == " ")	//controllo sia libero
+			if(isFree(index, j))	//controllo sia libero
 			{
 				setDefense(index, j, 'C');	//lettera unità
 			}
@@ -162,7 +172,7 @@ void Grid::insert(unità, string bow, string stern)	//bow=prua, stern=poppa
 	{
 		for(int index = j; index < y; index++)
 		{
-			if(getDefense(i, index) == " ")
+			if(isFree(i, index))
 			{
 				setDefense(i, index, 'C');	//lettera unità
 			}
@@ -186,12 +196,12 @@ void Grid::clear()
 	{
 		setDefense(center_i, center_j, ' ');
 	}
-	else if(getDefense(center_i + 1, center_j) == " ")	//nave verticale
+	else if(isFree(center_i + 1, center_j))	//nave verticale
 	{
 		for(int index = center_j - ((space-1)/2); index <= center_j + ((space-1)/2); index++)
 			setDefense(center_i, index, ' ');
 	}
-	else if(getDefense(center_i, center_j + 1) == " ")	//nave orizzontale
+	else if(isFree(center_i, center_j + 1))	//nave orizzontale
 	{
 		for(int index = center_i - ((space-1)/2); index <= center_i + ((space-1)/2); index++)
 			setDefense(index, center_j, ' ');
@@ -254,5 +264,3 @@ ostream& operator<< (ostream& os, Grid grid)
 	
 	return os << endl;
 }
-
-

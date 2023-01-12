@@ -20,6 +20,7 @@ public:
 	void setAttack(int i, int j, char c);
     int convert(string c);
 	
+	bool isFree(int i, int j);
 	void insert(unità, string bow, string stern); //fare con template(?) per gestire diversi tipi unità
 	void clear();
 	void deleteSonar();
