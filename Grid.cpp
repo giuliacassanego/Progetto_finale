@@ -1,4 +1,4 @@
-//Cassanego Giulia
+//Cassanego Giulia 2032560
 
 #include <ostream>
 #include <stdio.h>
@@ -13,6 +13,10 @@ Grid::Grid()
 	char c = 65;
 	for(int j = 0; j < 12; j++)
 	{
+		while (c == 74 || c == 75)	//escludo J e K
+		{
+			c++;
+		}
 		defense[0][j] = c;	//prima colonna
 		attack[0][j] = c;
 		c++;
@@ -20,7 +24,7 @@ Grid::Grid()
 	
 	//numeri
 	c = 49;
-    int i =1;
+    int i = 1;
     while (c < 58)
     {
         defense[i][12] = c;	//ultima riga
@@ -44,7 +48,6 @@ Grid::Grid()
 			attack[i][j] = ' ';
 		}
 	}
-	
 	defense[0][12] = ' ';
 	attack[0][12] = ' ';
 }
@@ -80,79 +83,102 @@ void Grid::setAttack(int i, int j, char c)
 int Grid::convert(string c)
 {
     int n;
-    if(c == "A" || c== "a")
+    if(c == "A" || c == "a")
     {
-        n =1;
+        n = 0;
     }
-    else if(c == "B" || c== "b")
+    else if(c == "B" || c == "b")
     {
-        n =2;
+        n = 1;
     }
-    else if(c == "C" || c== "c")
+    else if(c == "C" || c == "c")
     {
-        n =3;
+        n = 2;
     }
-    else if(c == "D" || c== "d")
+    else if(c == "D" || c == "d")
     {
-        n =4;
+        n = 3;
     }
-    else if(c == "E" || c== "e")
+    else if(c == "E" || c == "e")
     {
-        n =5;
+        n = 4;
     }
-    else if(c == "F" || c== "f")
+    else if(c == "F" || c == "f")
     {
-        n =6;
+        n = 5;
     }
-    else if(c == "G" || c== "g")
+    else if(c == "G" || c == "g")
     {
-        n =7;
+        n = 6;
     }
-    else if(c == "H" || c== "h")
+    else if(c == "H" || c == "h")
     {
-        n =8;
+        n = 7;
     }
-    else if(c == "I" || c== "i")
+    else if(c == "I" || c == "i")
     {
-        n =9;
+        n = 8;
     }
-    else if(c == "L" || c== "l")
+    else if(c == "L" || c == "l")
     {
-        n =10;
+        n = 9;
     }
-    else if(c == "M" || c== "m")
+    else if(c == "M" || c == "m")
     {
-        n =11;
+        n = 10;
     }
-    else if(c == "N" || c== "n")
+    else if(c == "N" || c == "n")
     {
-        n =12;
+        n = 11;
     }
     return n;
-
 }
 
-
-
-/*void Grid::insert(unità, int i, int j)
+void Grid::insert(unità, string poppa, string prua)
 {
+	int j = convert(poppa.substr(0,1));	//lettera
+	int i = stoi(poppa.substr(1));	//numero
+	
+	int y = convert(prua.substr(0,1));
+	int x = stoi(prua.substr(1));
+	
+	if(j == y)	//orizzontale
+	{
+		for(int index = i; index < x; index++)
+		{
+			setDefense(index, j, 'C');
+		}
+	}
+	else if(i == x)	//verticale
+	{
+		for(int index = j; index < y; index++)
+		{
+			setDefense(i, index, 'C');
+		}
+	}
+	else
+	{
+		throw invalid_argument("error: Invalid positions entered");
+	}
+	
+/*
 	if(unità == corazzata)
 	{
 		for(index = i - 2; index <= i + 2; index++)
-			setDefense(i, j, C);
+			setDefense(i, j, 'C');
 	}
 	
 	if(unità == support)
 	{
 		for(index = i - 1; index <= i + 1; index++)
-			setDefense(i, j, S);
+			setDefense(i, j, 'S');
 	}
 	
 	if(unità == explorer)
 	{
-		setDefense(i, j, E);
-	}
-}*/
+		setDefense(i, j, 'E');
+	}*/
+}
 
 
 /*
@@ -182,9 +208,9 @@ void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 
 ostream& operator<< (ostream& os, Grid grid)
 {
-	os << "Griglia di difesa" << endl;
+	os << endl << "Griglia di difesa" << endl;
 	//griglia difesa
-	for (int j = 0; j < 13; j++)
+	for (int j = 0; j < 12; j++)
 	{
 		for (int i = 0; i < 13; i++)
 		{
@@ -192,10 +218,18 @@ ostream& operator<< (ostream& os, Grid grid)
 		}
 		os << endl;	// << "-------------";
 	}
-	os << endl << "Griglia di attacco" << endl;
+	for (int i = 0; i < 10; i++)	//stampo ultima riga, solo numeri senza |
+	{
+		os << grid.getDefense(i, 12) << "   ";
+	}
+	for (int i = 10; i < 13; i++)
+	{
+		os << grid.getDefense(i, 12) << "  ";
+	}
+	os << endl << endl << "Griglia di attacco" << endl;
 	
 	//griglia attacco
-	for (int j = 0; j < 13; j++)
+	for (int j = 0; j < 12; j++)
 	{
 		for (int i = 0; i < 13; i++)
 		{
@@ -203,8 +237,16 @@ ostream& operator<< (ostream& os, Grid grid)
 		}
 		os << endl;	// << "-------------" << endl;
 	}
+	for (int i = 0; i < 10; i++)
+	{
+		os << grid.getAttack(i, 12) << "   ";
+	}
+	for (int i = 10; i < 13; i++)
+	{
+		os << grid.getAttack(i, 12) << "  ";
+	}
 	
-	return os;
+	return os << endl;
 }
 
 

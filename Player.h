@@ -1,4 +1,4 @@
-//Cassanego Giulia
+//Cassanego Giulia 2032560
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -30,4 +30,4 @@ public:
 	Grid getGrid();
 };
 
-#endif
+#endif	//PLAYER_H

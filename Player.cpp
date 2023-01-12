@@ -1,4 +1,5 @@
-//Cassanego Giulia
+//Cassanego Giulia 2032560
+
 #include <iostream>
 #include <stdexcept>
 
@@ -6,7 +7,7 @@
 #include "Grid.h"
 #include "Corazzata.h"
 #include "NaveSupporto.h"
-#include "SottoMarino.h"
+#include "Sottomarino.h"
 
 using namespace std;
 
