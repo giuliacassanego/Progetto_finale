@@ -134,34 +134,52 @@ int Grid::convert(string c)
     return n;
 }
 
-void Grid::insert(unità, string poppa, string prua)
+void Grid::insert(unità, string bow, string stern)	//bow=prua, stern=poppa
 {
-	int j = convert(poppa.substr(0,1));	//lettera
-	int i = stoi(poppa.substr(1));	//numero
+	int j = convert(bow.substr(0,1));	//lettera
+	int i = stoi(bow.substr(1));	//numero
 	
-	int y = convert(prua.substr(0,1));
-	int x = stoi(prua.substr(1));
+	int y = convert(stern.substr(0,1));
+	int x = stoi(stern.substr(1));
 	
 	if(j == y)	//orizzontale
 	{
 		for(int index = i; index < x; index++)
 		{
-			setDefense(index, j, 'C');
+			if(getDefense(index, j) == ' ')	//controllo sia libero
+			{
+				setDefense(index, j, 'C');
+			}
+			else
+			{
+				throw invalid_argument("error: Position already occupied");
+			}
 		}
+		//unità.center_i = (i + x)/2;
+		//unità.center_j = j;
 	}
 	else if(i == x)	//verticale
 	{
 		for(int index = j; index < y; index++)
 		{
-			setDefense(i, index, 'C');
+			if(getDefense(i, index) == ' ')
+			{
+				setDefense(i, index, 'C');
+			}
+			else
+			{
+				throw invalid_argument("error: Position already occupied");
+			}
 		}
+		//unità.center_i = i;
+		//unità.center_j = (j + y)/2;
 	}
 	else
 	{
-		throw invalid_argument("error: Invalid positions entered");
+		throw invalid_argument("error: Invalid position entered");
 	}
 	
-/*
+	/*
 	if(unità == corazzata)
 	{
 		for(index = i - 2; index <= i + 2; index++)
@@ -184,13 +202,28 @@ void Grid::insert(unità, string poppa, string prua)
 /*
 void Grid::clear()
 {
-    
-    if(nave.sink)
+	if(unità == explorer)
 	{
-		nave.setDefense(i, j, ' ');
+		setDefense(center_i, center_j, ' ');
+	}
+	else if(getDefense(center_i + 1, center_j) == ' ')	//nave verticale
+	{
+		for(index = center_j - 2; index <= center + 2; index++)
+			setAttack(i, j, ' ');
+	}
+	
+	if(unità == support)
+	{
+		for(index = center - 1; index <= center + 1; index++)
+			setAttack(i, j, ' ');
+	}
+	
+	if(unità == explorer)
+	{
+		setAttack(i, j, ' ');
 	}
 }
- * */
+ */
 
 void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 {
