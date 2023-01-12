@@ -30,6 +30,11 @@ Player::Player(string n)
     
 }
 
+Grid::Grid Player::getGrid()
+{
+    return grid1;
+}
+
 void Player::hasHit()
 {
     hits++;
