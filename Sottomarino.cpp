@@ -9,7 +9,7 @@ using namespace std;
 Sottomarino::Sottomarino(string n)
 {
     name = n;
-    space = 5;
+    space = 1;
     shield = space;
 }
 
