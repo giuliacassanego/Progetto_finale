@@ -29,7 +29,8 @@ Player::Player(string n)
     Grid grid1;
     
 }
-Grid::Grid Player::getGrid()
+
+Grid Player::getGrid()
 {
     return grid1;
 }
