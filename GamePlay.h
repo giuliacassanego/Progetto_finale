@@ -11,11 +11,14 @@ class GamePlay
 {
     private:
        //bool win = false; 
+       Computer player1;
+       Computer player02;
+       Player player2;
        
-    
-    public:
-        GamePlay(Computer player1, Player player2);
-        GamePlay(Computer player1, Computer player2);
+public:
+        //?????
+        GamePlay(Computer playerC, Player playerP);
+        GamePlay(Computer playerC1, Computer playerC2);
         //~GamePlay();
         
         int start(); //funzione ch decide chi comincia ilioco in modo casuale
