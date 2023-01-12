@@ -7,22 +7,24 @@
 #include <cstdlib>
 #include <ctime>
 
-GamePlay::GamePlay(Computer player1, Player player2)
+//GamePlay::GamePlay(){}
+
+GamePlay::GamePlay(Computer playerC, Player playerP)
 {
-    player1 = player1("player1");
-    player2 = player2("player2");
+    playerC = Computer player1("player1");
+    playerP = Player player2("player2");
 }
 
-GamePlay::GamePlay(Computer player1, Computer player2)
+GamePlay::GamePlay(Computer playerC1, Computer playerC2);
 {
-    player1 = player1("player1");
-    player2 = player2("player2");
+    playerC1 = player1("player1");
+    playerC2 = player2("player2");
 }
 
 /*
 ~GamePlay() //distruttore che elimina oggetto creato alla fine edella partita
 {
-
+    
 }
 */
 
@@ -78,4 +80,5 @@ void GamePlay::playAction(Player::Player p)
     
 }
  * */
+
 
