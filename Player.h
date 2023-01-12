@@ -3,6 +3,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <iostream>
+#include "Grid.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
     void hasHit();
     int getHits();
     void hasWin();
+	Grid getGrid();
 };
 
 #endif
