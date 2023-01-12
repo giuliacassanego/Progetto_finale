@@ -4,6 +4,7 @@
 #define COMPUTER_H
 
 #include <iostream>
+#include "Player.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ class Computer
         //funzioni per la scelta della posizione
         int randomChosePositionNum();
         int randomChosePositionLett();
+        Player getPlayer();
 };
 
 #endif // COMPUTER_H
-
