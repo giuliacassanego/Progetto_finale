@@ -1,6 +1,6 @@
 //Angelica Zonta 2032570
 #include "Computer.h"
-#include "Player.h"
+#include "Grid.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -8,6 +8,11 @@
 Computer::Computer(string s)
 {
     Player player1(s);
+}
+
+Player Computer::getPlayer()
+{
+    return player1;
 }
 
 char Computer::randomChoseNavalUnit()
@@ -29,17 +34,6 @@ char Computer::randomChoseNavalUnit()
     }
     return navalUnit;
 }
-
-/*
-void Computer::prepareGrid()
-{
-    int  =1;
-    while(i<=3)
-    {
-        
-    }
-}
- * */
 
 int Computer::randomChosePositionLett()
 {
@@ -66,6 +60,39 @@ int Computer::randomChosePositionNum()
     return n;
    
 }
+
+void Computer::prepareGrid()
+{
+    int corazzata=1;
+    while(corazzata<=3)
+    {
+        try{
+            this.getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'C');
+            corazzata++;
+        }
+        catch(invalid_argument exception()){}
+    }
+    int nave =1;
+    while(nave<=3)
+    {
+        try{
+            this.getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'S');
+            nave++;
+        }
+        catch(invalid_argument exception()){}
+    }
+    int sottomarino =1;
+    while(sottomarino <=2)
+    {
+        try{
+            this.getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'E');
+            sottomarino++;
+        }
+        catch(invalid_argument exception()){}
+    }
+}
+ 
+
 
 
 
