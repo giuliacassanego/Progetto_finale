@@ -4,6 +4,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
+
+Computer::Computer(){}
 
 Computer::Computer(string s)
 {
@@ -21,29 +24,12 @@ Player Computer::getPlayer()
 {
     return player;
 }
-char Computer::randomChoseNavalUnit()
-{
-    srand(time(NULL));
-    int n = rand()%3+1; //numero casuale da 1 a 3
-    char navalUnit;
-    if(n==1)
-    {
-        navalUnit = 'C';
-    }
-    else if(n==2)
-    {
-        navalUnit = 'S';
-    }
-    else if(n==3)
-    {
-        navalUnit = 'E';
-    }
-    return navalUnit;
-}
 
-int Computer::randomChosePositionLett()
+
+string Computer::randomChoseInitialPos()
 {
     srand(time(NULL));
+    int n = rand()%12+1; //numero casuale da 1 a 12
     
     bool correctLett = false; 
     int pos;
@@ -55,51 +41,89 @@ int Computer::randomChosePositionLett()
             correctLett=true;
         }
     }
-    return pos;
+    string s = to_string(pos)+ to_string(n);
+    return s;
+ 
 }
 
-int Computer::randomChosePositionNum()
+int Computer::chooseDirection()
 {
-    std::string s;
     srand(time(NULL));
-    int n = rand()%12+1; ///scelto la posizione nella griglia da 1 a 12
+    int n = rand()%1+1; 
     return n;
-   
+}
+
+string Computer::findStern(char flotta, string bow) //metodo per trovare la prua
+{
+    int dir = chooseDirection();
+    string lett= bow.substr(0,1);
+    int lettN = convert(lett); 
+    int num = stoi(bow.substr(1));
+    if(dir ==1) //scorro in orizzontale
+    {
+        if(flotta =='C')
+        {
+            num = num+5;
+        }
+        else if(flotta == 'S')
+        {
+            num = num+3;
+        }
+    }
+    else{
+        //scorro in verticale
+        if(flotta == 'C')
+        {
+            lettN = lettN+5;
+        }
+        else if(flotta == 'S')
+        {
+            lettN = lettN +3;
+        }
+        lett = lettN;
+    }
+    string stern = lett+ to_string(num);
+    return stern;
 }
 
 void Computer::prepareGrid()
 {
+    //inserisco le corazzate
     int corazzata=1;
     while(corazzata<=3)
     {
         try{
-            this->getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'C');
-            corazzata++;
+            string bow = randomChoseInitialPos();
+            string stern = findStern('C', bow);
+            this->getPlayer().getGrid().insert(unità, bow, stern);
+            corazzata ++;
         }
         catch(invalid_argument exception()){}
     }
+    //inserisoc le navi
     int nave =1;
     while(nave<=3)
     {
         try{
-            this ->getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'S');
+            string bow = randomChoseInitialPos();
+            string stern = findStern('S', bow);
+            this->getPlayer().getGrid().insert(unità, bow, stern);
             nave++;
         }
         catch(invalid_argument exception()){}
     }
+    //inserisoc i sottomarini
     int sottomarino =1;
     while(sottomarino <=2)
     {
         try{
-            this->getPlayer().getGrid().setAttack(randomChosePositionNum(), randomChosePositionLett(), 'E');
+            string bow = randomChoseInitialPos();
+            this->getPlayer().getGrid().insert(unità, bow, bow);
             sottomarino++;
         }
         catch(invalid_argument exception()){}
     }
 }
- 
-
-
 
 
 
