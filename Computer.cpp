@@ -44,7 +44,7 @@ string Computer::randomChoseInitialPos()
 int Computer::chooseDirection()
 {
     srand(time(NULL));
-    int n = rand()%1+1; 
+    int n = rand()%2+1; 
     return n;
 }
 
