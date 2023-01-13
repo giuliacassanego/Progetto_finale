@@ -36,17 +36,6 @@ int GamePlay::start()
 }
 
 
-/*
-void GamePlay::posInizialeUnitAtt(std::string s, char c)
-{
-    while(s.hasNextLine())
-    {
-        //se inserisco il comando con una lettera, come faccio a trasformarla in int?
-    }
-    Grid::setAttack(int i, int j, char c);
-}
- * */
-
 Player::Player GamePlay::getPlayer1()
 {
     return player1;
@@ -73,12 +62,4 @@ void GamePlay::checkWin(Player p1, Player p2)
         p2.hasWin();
     }
 }
-
-/*
-void GamePlay::playAction(Player::Player p)
-{
-    
-}
- * */
-
 
