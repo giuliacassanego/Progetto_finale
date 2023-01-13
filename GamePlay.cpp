@@ -46,6 +46,27 @@ Player::Player GamePlay::getPlayer2()
     return player2;
 }
 
+//mossa da fare
+void GamePlay::randomMove()
+{
+    srand(time(NULL));
+    int n = rand()%3+1;
+    if(n==1)
+    {
+        int c = rand()%3+1;
+        //faccio esegure l'azione alla corazzata che esce in c
+    } 
+    else if(n==2)
+    {
+        int c = rand()%3+1;
+        //faccio eseguire azione alla nave che esce in n
+    }
+    else{
+        int c = rand()%2+1;
+        //faccio eseguire azione al sottomarino che esce in n
+    }
+    
+}
 
 int GamePlay::calcShield(Player p)
 {
