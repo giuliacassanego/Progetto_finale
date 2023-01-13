@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Computer
+class Computer : public Player
 {
 private:
     Grid grid;
