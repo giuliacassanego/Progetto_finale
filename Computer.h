@@ -16,15 +16,15 @@ private:
     Player player;
 public:
         
+        Computer();
         Computer(string s);
         
-        char randomChoseNavalUnit(); //funzione per scelta casuale della flotta che deve eseguire il movimento
-        //funzioni per la scelta della posizione
-        int randomChosePositionNum();
-        int randomChosePositionLett();
+        string randomChoseInitialPos();
         Player getPlayer();
         Grid getGrid();
         void prepareGrid();
+        int chooseDirection();
+        string findStern(char flotta, string bow);
         
         
     
