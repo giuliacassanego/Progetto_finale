@@ -10,12 +10,6 @@ Computer::Computer(){}
 
 Computer::Computer(string s)
 {
-    Player player(s);
-    grid;
-}
-
-Computer::Computer(string s)
-{
     player = Player newP(s);
     grid = Grid newG();
 }
