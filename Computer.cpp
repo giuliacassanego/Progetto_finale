@@ -14,9 +14,10 @@ Computer::Computer(string s)
     grid;
 }
 
-Grid Computer::getGrid()
+Computer::Computer(string s)
 {
-    return grid;
+    player = Player newP(s);
+    grid = Grid newG();
 }
 
 
