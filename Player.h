@@ -16,6 +16,7 @@ private:
 
 public:
 	Player(string n);
+	Player();
 	
 	//member functions
 	void setCor(int n);
