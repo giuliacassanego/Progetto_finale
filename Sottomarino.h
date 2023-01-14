@@ -1,19 +1,22 @@
 #ifndef SOTTOMARINO_H
 #define SOTTOMARINO_H
 #include <iostream>
-#include "Army.h"
+
 using namespace std;
 
-class Sottomarino : public Army
+class Sottomarino 
 {
-public:
-    Sottomarino(string name);
-    ~Sottomarino();
-private:
+ private:
     int space;
     int shield;
-    string name;
+    string name;   
     
+    
+    
+    public:
+    Sottomarino(string name);
+    ~Sottomarino();
+
     void scan(string center);
     void shift(string destination);
         
