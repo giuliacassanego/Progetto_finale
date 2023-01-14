@@ -3,6 +3,9 @@
 #include "GamePlay.h"
 #include "Grid.h"
 #include "Computer.h"
+#include "sottomarino.h"
+#include "NaveSupporto.h"
+#include "Sottomarino.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -21,13 +24,18 @@ GamePlay::GamePlay(Computer playerC1, Computer playerC2);
     playerC2 = Computer("player2");
 }
 
-
 /*
 ~GamePlay() //distruttore che elimina oggetto creato alla fine edella partita
 {
     
 }
 */
+
+//da fare con template perchè posso inserire sia computer cheplayer
+void GamePlay::hasHit()
+{
+    hits++;
+}
 
 int GamePlay::start()
 {
@@ -48,13 +56,17 @@ Player::Player GamePlay::getPlayer2()
 }
 
 //mossa da fare
-void GamePlay::randomMove()
+void GamePlay::randomAction()
 {
     srand(time(NULL));
     int n = rand()%3+1;
     if(n==1)
     {
         int c = rand()%3+1;
+        if(c==1)
+        {
+            
+        }
         //faccio esegure l'azione alla corazzata che esce in c
     } 
     else if(n==2)
@@ -68,11 +80,11 @@ void GamePlay::randomMove()
     }
     
 }
+
 int GamePlay::calcShield(Player p)
 {
-    return (p.getCor1().getshield() + p.getCor2().getshield()+p.getCor3().getshield() + p.getNave1().getShield() + p.getNave2().getshield() + p.getNave3().getshield() + p.getSub1().getShield() + p.getSub2().getShield());
+    return (p.getCor1().getShield() + p.getCor2().getShield()+p.getCor3().getShield() + p.getNave1().getShield() + p.getNave2().getShield() + p.getNave3().getShield() + p.getSub1().getShield() + p.getSub2().getShield());
 }
-
 
 void GamePlay::checkWin(Player p1, Player p2)
 {    
@@ -94,5 +106,3 @@ bool GamePlay::checkAffondato()
     }
     return false;
 }
-
-
