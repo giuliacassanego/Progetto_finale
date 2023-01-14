@@ -55,14 +55,6 @@ void Corazzata::fire(string origin, string target)
     }
 }
 
-void Corazzata::checkAffondato()
-{
-    if(this.getShield() ==0)
-    {
-        std::cout <<"ciao";//da finire
-        //da richiamare il distruttore degli oggetti
-    }
-}
 
 int Corazzata::getShield()
 {
