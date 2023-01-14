@@ -35,4 +35,4 @@ public:
 	Sottomarino getSub2();
 };
 
-#endif	//PLAYER_H
+#endif
