@@ -20,7 +20,7 @@ private:
 
     void fire(string origin, string target);
     int getShield();
-    void checkAffondato();
+   
     void setCenter(int i, int j);
     string getCenter();
         
