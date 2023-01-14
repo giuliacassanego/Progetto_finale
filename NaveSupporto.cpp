@@ -17,6 +17,7 @@ NaveSupporto::~NaveSupporto()
 {
 }
 
+
 int NaveSupporto::getShield()
 {
     return shield;
@@ -92,4 +93,5 @@ void NaveSupporto::repair(string center)//capire il return come farlo-grosso pro
     
     
 }
+
 
