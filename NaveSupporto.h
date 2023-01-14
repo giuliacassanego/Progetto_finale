@@ -1,20 +1,22 @@
 #ifndef NAVESUPPORTO_H
 #define NAVESUPPORTO_H
 #include <iostream>
-#include "Army.h"
+
 using namespace std;
 
-class NaveSupporto : public Army
+class NaveSupporto 
 {
-    public:
-        NaveSupporto(string n);
-        ~NaveSupporto();
-private:
+    private:
 
     int space;
     int shield;
     string name;
-    string center;
+    
+    
+    public:
+        NaveSupporto(string n);
+        ~NaveSupporto();
+
     
     void repair(string center);
     void shift(string center, string destination);
