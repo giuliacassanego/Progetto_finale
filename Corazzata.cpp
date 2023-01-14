@@ -17,6 +17,18 @@ Corazzata::~Corazzata()
 {
 }
 
+void Corazzata::setCenter(int i, int j)
+{
+    char c = (char) i;
+    char r = (char) j;
+    
+    center = c + r;
+}
+
+string Corazzata::getCenter()
+{
+    return center;
+}
 
 void Corazzata::fire(string origin, string target)
 {
