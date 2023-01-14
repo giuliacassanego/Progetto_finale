@@ -3,24 +3,27 @@
 
 #include <vector>
 #include <iostream>
-#include "Army.h"
+
 using namespace std;
 
-class Corazzata : public Army
+class Corazzata 
 {
-public:
-    Corazzata();
-    ~Corazzata();
-
 private:
     int space;
     int shield;
     string name;
     string center;
+    
+    
+    public:
+    Corazzata();
+    ~Corazzata();
+
+
 
     void fire(string origin, string target);
     int getShield();
-   
+    void checkAffondato();
     void setCenter(int i, int j);
     string getCenter();
         
@@ -28,4 +31,3 @@ private:
 };
 
 #endif // CORAZZATA_H
-
