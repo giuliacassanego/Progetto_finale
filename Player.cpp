@@ -11,6 +11,8 @@
 
 using namespace std;
 
+Player::Player(){}
+
 Player::Player(string n)
 {
     hits=0; 
@@ -52,46 +54,42 @@ void Player::hasWin()
     win = true;
 }
 
-/*
-void Player::setCor(int n)
+Corazzata Player::getCor1()
 {
-	if (n > 3)	//3 o 4?
-	{
-		throw invalid_argument("Invalid number");
-	}
-	num_corazzate = n;
+	return corazzata1;
 }
-	
-void Player::setSup(int n)
+
+Corazzata Player::getCor2()
 {
-	if (n > 3)
-	{
-		throw invalid_argument("Invalid number");
-	}
-	num_support = n;
+	return corazzata2;
 }
-	
-void Player::setExp(int n)
+
+Corazzata Player::getCor3()
 {
-	if (n > 2)
-	{
-		throw invalid_argument("Invalid number");
-	}
-	num_explorer = n;
+	return corazzata3;
 }
-	
-int Player::getCor()
+
+NaveSupporto Player::getNave1()
 {
-	return num_corazzate;
+	return nave1;
 }
-	
-int Player::getSup()
+
+NaveSupporto Player::getNave2()
 {
-	return num_support;
+	return nave2;
 }
-	
-int Player::getExp()
+
+NaveSupporto Player::getNave3()
 {
-	return num_explorer;
+	return nave3;
 }
-*/
+
+Sottomarino Player::getSub1()
+{
+	return sottomarino1;
+}
+
+Sottomarino Player::getSub2()
+{
+	return sottomarino2;
+}
