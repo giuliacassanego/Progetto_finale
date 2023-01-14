@@ -27,6 +27,7 @@ public:
         Player getPlayer1();
         Player getPlayer2();
         void randomMove();
+        bool checkAffondato();
 };
 
 
