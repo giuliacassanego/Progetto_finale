@@ -16,19 +16,20 @@ private:
 
 public:
 	Player(string n);
-	Player();
 	
 	//member functions
-	void setCor(int n);
-	void setSup(int n);
-	void setExp(int n);
-	int getCor();
-	int getSup();
-	int getExp();
     void hasHit();
     int getHits();
     void hasWin();
 	Grid getGrid();
+	Corazzata getCor1();
+	Corazzata getCor2();
+	Corazzata getCor3();
+	NaveSupporto getNave1();
+	NaveSupporto getNave2();
+	NaveSupporto getNave3();
+	Sottomarino getSub1();
+	Sottomarino getSub2();
 };
 
 #endif	//PLAYER_H

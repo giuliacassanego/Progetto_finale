@@ -11,8 +11,6 @@
 
 using namespace std;
 
-Player::Player(){}
-
 Player::Player(string n)
 {
     hits=0; 
