@@ -80,6 +80,8 @@ void Grid::setAttack(int i, int j, char c)
 	attack[i][j] = c;
 }
 
+
+
 int Grid::convert(string c)
 {
     int n;
@@ -220,6 +222,53 @@ void Grid::deleteSonar()	//cerco Y e riporto a carattere iniziale
 			}
 		}
 	}
+}
+
+char Grid::reverseConvert(int n)
+{
+    char c;
+    switch(n)
+    {
+            case 0:
+                return c ='A';
+                break;
+            case 1:
+                return c ='B';
+                break;
+            case 2:
+                return c ='C';
+                break;
+            case 3:
+                return c ='D';
+                break;
+            case 4:
+                return c ='E';
+                break;
+            case 5:
+                return c ='F';
+                break;
+            case 6:
+                return c ='G';
+                break;
+            case 7:
+                return c ='H';
+                break;
+            case 8:
+                return c ='I';
+                break;
+            case 9:
+                return c ='L';
+                break;
+            case 10:
+                return c ='M';
+                break;
+            case 11:
+                return c ='N';
+                break;
+            default:
+                throw invalid_argument("error: Invalid number entered");
+                break;
+    }
 }
 
 ostream& operator<< (ostream& os, Grid grid)
