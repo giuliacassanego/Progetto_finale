@@ -63,34 +63,24 @@ void Sottomarino::shift(string center, string destination)//capire se era in ver
     int cd = (int) Grid::convert(destination.substr(0,1));
     int rd = (int) destination.substr(1);
     
-   if(this->name == "player1")
-        {
-            if(player1.getGrid.getDefence(cd,rd) == ' ')
+    if(this->name == "player1")
+    {
+        if(player1.getGrid.getDefence[cd][rd] != 'C' || player1.getGrid.getDefence[cd][rd] != 'c')
             {
-                char c1 =  player1.getGrid.getDefence(c,r);
-                
-                player1.getGrid.setDefence(cd,rd,c);
-                player1.getGrid.setDefence(c,r,' ');
-            }
-            else
-            {
-                    //eccezione
-            }
-        
-        }
-        if(this->name == "player2")
-        {
-            if(player2.getGrid.getDefence(cd,rd) == ' ')
-            {
-                char c2 =  player2.getGrid.getDefence(c,r);
-                player2.getGrid.setDefence(cd,rd,c);
-                player2.getGrid.setDefence(c,r,' ');
-            }
-            else
-            {
-                //eccezione
+                    player1.getGrid.getDefence[cd][rd] = player1.getGrid.getDefence[c][r];
+                    player1.getGrid.getDefence[c][r] = ' ';
             }
 
-        }
+    }
+    if(this->name == "player1")
+    {
+        if(player2.getGrid.getDefence[cd][rd] != 'C' || player2.getGrid.getDefence[cd][rd] != 'c')
+            {
+                player2.getGrid.getDefence[cd][rd] = player2.getGrid.getDefence[c][r];
+                player2.getGrid.getDefence[c][r] = ' ';
+            }
+
+    }
 }
+
 
