@@ -84,3 +84,14 @@ void GamePlay::checkWin(Player p1, Player p2)
     }
 }
 
+bool GamePlay::checkAffondato()
+{
+    if(this->getShield() ==0)
+    {
+        this->clear();
+        return true;
+    }
+    return false;
+}
+
+
