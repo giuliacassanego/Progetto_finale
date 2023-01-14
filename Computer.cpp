@@ -15,7 +15,6 @@ Computer::Computer(string s)
 }
 
 
-
 Player Computer::getPlayer()
 {
     return player;
@@ -39,7 +38,7 @@ string Computer::randomChoseInitialPos()
     }
     string s = to_string(pos)+ to_string(n);
     return s;
- 
+
 }
 
 int Computer::chooseDirection()
@@ -122,4 +121,58 @@ void Computer::prepareGrid()
 }
 
 
-
+/*
+int Computer::convert(string c)
+{
+    int n;
+    if(c == "A" || c == "a")
+    {
+        n = 0;
+    }
+    else if(c == "B" || c == "b")
+    {
+        n = 1;
+    }
+    else if(c == "C" || c == "c")
+    {
+        n = 2;
+    }
+    else if(c == "D" || c == "d")
+    {
+        n = 3;
+    }
+    else if(c == "E" || c == "e")
+    {
+        n = 4;
+    }
+    else if(c == "F" || c == "f")
+    {
+        n = 5;
+    }
+    else if(c == "G" || c == "g")
+    {
+        n = 6;
+    }
+    else if(c == "H" || c == "h")
+    {
+        n = 7;
+    }
+    else if(c == "I" || c == "i")
+    {
+        n = 8;
+    }
+    else if(c == "L" || c == "l")
+    {
+        n = 9;
+    }
+    else if(c == "M" || c == "m")
+    {
+        n = 10;
+    }
+    else if(c == "N" || c == "n")
+    {
+        n = 11;
+    }
+    return n;
+}
+*/
