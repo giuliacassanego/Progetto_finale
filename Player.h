@@ -4,6 +4,9 @@
 #define PLAYER_H
 #include <iostream>
 #include "Grid.h"
+#include "Corazzata.h"
+#include "Sottomarino.h"
+#include "NaveSupporto.h"
 
 using namespace std;
 
