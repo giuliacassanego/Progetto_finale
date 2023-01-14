@@ -11,15 +11,16 @@
 
 GamePlay::GamePlay(Computer playerC, Player playerP)
 {
-    playerC = Computer player1("player1");
-    playerP = Player player2("player2");
+    playerC = Computer("player1");
+    playerP = Player("player2");
 }
 
 GamePlay::GamePlay(Computer playerC1, Computer playerC2);
 {
-    playerC1 = player1("player1");
-    playerC2 = player2("player2");
+    playerC1 = Computer("player1");
+    playerC2 = Computer("player2");
 }
+
 
 /*
 ~GamePlay() //distruttore che elimina oggetto creato alla fine edella partita
