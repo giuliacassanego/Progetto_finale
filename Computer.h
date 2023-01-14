@@ -25,7 +25,7 @@ public:
         void prepareGrid();
         int chooseDirection();
         string findStern(char flotta, string bow);
-        
+        int convert(string c);
         
     
 };
