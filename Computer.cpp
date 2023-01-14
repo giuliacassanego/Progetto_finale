@@ -10,9 +10,10 @@ Computer::Computer(){}
 
 Computer::Computer(string s)
 {
-    player = Player newP(s);
-    grid = Grid newG();
+    player = Player(s);
+    grid = Grid();
 }
+
 
 
 Player Computer::getPlayer()
