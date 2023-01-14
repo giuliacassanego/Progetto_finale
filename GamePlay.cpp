@@ -68,11 +68,11 @@ void GamePlay::randomMove()
     }
     
 }
-
 int GamePlay::calcShield(Player p)
 {
-    return (p.corazzata1.getshield() + p.corazzata2.getshield()+p.corazzata2.getshield() + p.sottomarino1.getShield() + p.sottomarino2.getshield() + p.nave1.getshield() + p.nave2.getShield() + p.nave3.getShield());
+    return (p.getCor1().getshield() + p.getCor2().getshield()+p.getCor3().getshield() + p.getNave1().getShield() + p.getNave2().getshield() + p.getNave3().getshield() + p.getSub1().getShield() + p.getSub2().getShield());
 }
+
 
 void GamePlay::checkWin(Player p1, Player p2)
 {    
