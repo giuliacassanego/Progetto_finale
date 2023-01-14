@@ -3,13 +3,13 @@
 
 #include <vector>
 #include <iostream>
-
+#include "Army.h"
 using namespace std;
 
-class Corazzata
+class Corazzata : public Army
 {
 public:
-    Corazzata(string n);
+    Corazzata();
     ~Corazzata();
 
 private:

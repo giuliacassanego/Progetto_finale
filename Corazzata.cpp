@@ -6,7 +6,7 @@
 #include <cstring>
 #include <iostream>
 
-Corazzata::Corazzata(string n)
+Corazzata::Corazzata()
 {
     space = 5;
     shield = space;
@@ -36,9 +36,9 @@ void Corazzata::fire(string origin, string target)
     }
     else if(this ->name == "player2")
     {
-        if(player1.getGrid.getAttack(c, r) != ' ')
+        if(player1.getGrid.getAttack(c,r) != ' ')
         {
-            player1.getGrid.getAttack(c, r) = (char)tolower(player2.getGrid.getAttack[c][r]);
+            player1.getGrid.getAttack(c,r,'X');
         }
     }
 }

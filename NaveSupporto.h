@@ -1,9 +1,10 @@
 #ifndef NAVESUPPORTO_H
 #define NAVESUPPORTO_H
 #include <iostream>
+#include "Army.h"
 using namespace std;
 
-class NaveSupporto
+class NaveSupporto : public Army
 {
     public:
         NaveSupporto(string n);

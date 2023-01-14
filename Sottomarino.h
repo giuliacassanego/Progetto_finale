@@ -1,10 +1,10 @@
 #ifndef SOTTOMARINO_H
 #define SOTTOMARINO_H
 #include <iostream>
-
+#include "Army.h"
 using namespace std;
 
-class Sottomarino
+class Sottomarino : public Army
 {
 public:
     Sottomarino(string name);

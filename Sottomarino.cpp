@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Sottomarino::Sottomarino(string n)
+Sottomarino::Sottomarino()
 {
     name = n;
     space = 1;
@@ -29,259 +29,29 @@ void Sottomarino::scan(string center)
     
     if(this->name == "player1")
     {
-        if(player2.getGrid.getDefence[c-2][r-2] == 'C' ||player2.getGrid.getDefence[c-2][r-2] == 'c')
+        for( int i = c-2; i < c+3; i ++)
         {
-            player1.getGrid.setAttack[c-2][r-2] = 'Y';
+            for(int j = r-2; j < r+3; j++)
+            {
+                if(player2.getGrid.getDefence(i,j) != ' ')
+                {
+                    player1.getGrid.setAttack(i,j,'Y');
+                }
+            }
         }
-        
-        if(player2.getGrid.getDefence[c-2][r-1] == 'C' ||player2.getGrid.getDefence[c-2][r-1] == 'c')
-        {
-            player1.getGrid.setAttack[c-2][r-1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-2][r] == 'C' ||player2.getGrid.getDefence[c-2][r] == 'c')
-        {
-            player1.getGrid.setAttack[c-2][r] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-2][r+1] == 'C' ||player2.getGrid.getDefence[c-2][r+1] == 'c')
-        {
-            player1.getGrid.setAttack[c-2][r+1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-2][r+2] == 'C' ||player2.getGrid.getDefence[c-2][r+2] == 'c')
-        {
-            player1.getGrid.setAttack[c-2][r+2] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-1][r-2] == 'C' ||player2.getGrid.getDefence[c-1][r-2] == 'c')
-        {
-            player1.getGrid.setAttack[c-1][r-2] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-1][r-1] == 'C' ||player2.getGrid.getDefence[c-1][r-1] == 'c')
-        {
-            player1.getGrid.setAttack[c-1][r-1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-1][r] == 'C' ||player2.getGrid.getDefence[c-1][r] == 'c')
-        {
-            player1.getGrid.setAttack[c-1][r] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-1][r+1] == 'C' ||player2.getGrid.getDefence[c-1][r+1] == 'c')
-        {
-            player1.getGrid.setAttack[c-1][r+1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c-1][r+2] == 'C' ||player2.getGrid.getDefence[c-1][r+2] == 'c')
-        {
-            player1.getGrid.setAttack[c-1][r+2] = 'Y';
-        }
-        
-         if(player2.getGrid.getDefence[c][r-2] == 'C' ||player2.getGrid.getDefence[c][r-2] == 'c')
-        {
-            player1.getGrid.setAttack[c][r-2] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c][r-1] == 'C' ||player2.getGrid.getDefence[c][r-1] == 'c')
-        {
-            player1.getGrid.setAttack[c][r-1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c][r] == 'C' ||player2.getGrid.getDefence[c][r] == 'c')
-        {
-            player1.getGrid.setAttack[c][r] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c][r+1] == 'C' ||player2.getGrid.getDefence[c][r+1] == 'c')
-        {
-            player1.getGrid.setAttack[c][r+1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c][r+2] == 'C' ||player2.getGrid.getDefence[c][r+2] == 'c')
-        {
-            player1.getGrid.setAttack[c][r+2] = 'Y';
-        }
-        
-         if(player2.getGrid.getDefence[c+1][r-2] == 'C' ||player2.getGrid.getDefence[c+1][r-2] == 'c')
-        {
-            player1.getGrid.setAttack[c+1][r-2] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+1][r+1] == 'C' ||player2.getGrid.getDefence[c+1][r-1] == 'c')
-        {
-            player1.getGrid.setAttack[c+1][r+1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+1][r] == 'C' ||player2.getGrid.getDefence[c+1][r] == 'c')
-        {
-            player1.getGrid.setAttack[c+1][r] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+1][r+1] == 'C' ||player2.getGrid.getDefence[c+1][r+1] == 'c')
-        {
-            player1.getGrid.setAttack[c+1][r+1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+1][r+2] == 'C' ||player2.getGrid.getDefence[c+1][r+2] == 'c')
-        {
-            player1.getGrid.setAttack[c+1][r+2] = 'Y';
-        }
-        
-         if(player2.getGrid.getDefence[c+2][r-2] == 'C' ||player2.getGrid.getDefence[c+2][r-2] == 'c')
-        {
-            player1.getGrid.setAttack[c+2][r-2] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+2][r-1] == 'C' ||player2.getGrid.getDefence[c+2][r-1] == 'c')
-        {
-            player1.getGrid.setAttack[c+2][r-1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+2][r] == 'C' ||player2.getGrid.getDefence[c+2][r] == 'c')
-        {
-            player1.getGrid.setAttack[c+2][r] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+2][r+1] == 'C' ||player2.getGrid.getDefence[c+2][r+1] == 'c')
-        {
-            player1.getGrid.setAttack[c+2][r+1] = 'Y';
-        }
-        
-        if(player2.getGrid.getDefence[c+2][r+2] == 'C' ||player2.getGrid.getDefence[c+2][r+2] == 'c')
-        {
-            player1.getGrid.setAttack[c+2][r+2] = 'Y';
-        }
-      
     }
     else if(this->name == "player2")
     {
-        if(player1.getGrid.getDefence[c-2][r-2] == 'C' ||player1.getGrid.getDefence[c-2][r-2] == 'c')
+          for( int i = c-2; i < c+3; i ++)
         {
-            player2.getGrid.setAttack[c-2][r-2] = 'Y';
+            for(int j = r-2; j < r+3; j++)
+            {
+                if(player2.getGrid.getDefence(i,j) != ' ')
+                {
+                    player1.getGrid.setAttack(i,j,'Y');
+                }
+            }
         }
-        
-        if(player1.getGrid.getDefence[c-2][r-1] == 'C' ||player1.getGrid.getDefence[c-2][r-1] == 'c')
-        {
-            player2.getGrid.setAttack[c-2][r-1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-2][r] == 'C' ||player1.getGrid.getDefence[c-2][r] == 'c')
-        {
-            player2.getGrid.setAttack[c-2][r] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-2][r+1] == 'C' ||player1.getGrid.getDefence[c-2][r+1] == 'c')
-        {
-            player2.getGrid.setAttack[c-2][r+1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-2][r+2] == 'C' ||player1.getGrid.getDefence[c-2][r+2] == 'c')
-        {
-            player2.getGrid.setAttack[c-2][r+2] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-1][r-2] == 'C' ||player1.getGrid.getDefence[c-1][r-2] == 'c')
-        {
-            player2.getGrid.setAttack[c-1][r-2] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-1][r-1] == 'C' ||player1.getGrid.getDefence[c-1][r-1] == 'c')
-        {
-            player2.getGrid.setAttack[c-1][r-1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-1][r] == 'C' ||player1.getGrid.getDefence[c-1][r] == 'c')
-        {
-            player2.getGrid.setAttack[c-1][r] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-1][r+1] == 'C' ||player1.getGrid.getDefence[c-1][r+1] == 'c')
-        {
-            player2.getGrid.setAttack[c-1][r+1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c-1][r+2] == 'C' ||player1.getGrid.getDefence[c-1][r+2] == 'c')
-        {
-            player2.getGrid.setAttack[c-1][r+2] = 'Y';
-        }
-        
-         if(player1.getGrid.getDefence[c][r-2] == 'C' ||player1.getGrid.getDefence[c][r-2] == 'c')
-        {
-            player2.getGrid.setAttack[c][r-2] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c][r-1] == 'C' ||player1.getGrid.getDefence[c][r-1] == 'c')
-        {
-            player2.getGrid.setAttack[c][r-1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c][r] == 'C' ||player1.getGrid.getDefence[c][r] == 'c')
-        {
-            player2.getGrid.setAttack[c][r] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c][r+1] == 'C' ||player1.getGrid.getDefence[c][r+1] == 'c')
-        {
-            player2.getGrid.setAttack[c][r+1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c][r+2] == 'C' ||player1.getGrid.getDefence[c][r+2] == 'c')
-        {
-            player2.getGrid.setAttack[c][r+2] = 'Y';
-        }
-        
-         if(player1.getGrid.getDefence[c+1][r-2] == 'C' ||player1.getGrid.getDefence[c+1][r-2] == 'c')
-        {
-            player2.getGrid.setAttack[c+1][r-2] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+1][r+1] == 'C' ||player1.getGrid.getDefence[c+1][r-1] == 'c')
-        {
-            player2.getGrid.setAttack[c+1][r+1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+1][r] == 'C' ||player1.getGrid.getDefence[c+1][r] == 'c')
-        {
-            player2.getGrid.setAttack[c+1][r] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+1][r+1] == 'C' ||player1.getGrid.getDefence[c+1][r+1] == 'c')
-        {
-            player2.getGrid.setAttack[c+1][r+1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+1][r+2] == 'C' ||player1.getGrid.getDefence[c+1][r+2] == 'c')
-        {
-            player2.getGrid.setAttack[c+1][r+2] = 'Y';
-        }
-        
-         if(player1.getGrid.getDefence[c+2][r-2] == 'C' ||player1.getGrid.getDefence[c+2][r-2] == 'c')
-        {
-            player2.getGrid.setAttack[c+2][r-2] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+2][r-1] == 'C' ||player1.getGrid.getDefence[c+2][r-1] == 'c')
-        {
-            player2.getGrid.setAttack[c+2][r-1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+2][r] == 'C' ||player1.getGrid.getDefence[c+2][r] == 'c')
-        {
-            player2.getGrid.setAttack[c+2][r] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+2][r+1] == 'C' ||player1.getGrid.getDefence[c+2][r+1] == 'c')
-        {
-            player2.getGrid.setAttack[c+2][r+1] = 'Y';
-        }
-        
-        if(player1.getGrid.getDefence[c+2][r+2] == 'C' ||player1.getGrid.getDefence[c+2][r+2] == 'c')
-        {
-            player2.getGrid.setAttack[c+2][r+2] = 'Y';
-        }
-      
     } 
 }
 
