@@ -19,7 +19,7 @@ public:
 	void setDefense(int i, int j, char c);
 	void setAttack(int i, int j, char c);
     int convert(string c);
-	   char reverseConvert(int n);
+    char reverseConvert(int n);
 	
 	bool isFree(int i, int j);
 	void insert(unità, string bow, string stern); //fare con template(?) per gestire diversi tipi unità
@@ -30,3 +30,4 @@ public:
 std::ostream& operator<< (std::ostream& os, Grid grid);
 
 #endif	//GRID_H
+
