@@ -14,6 +14,7 @@ private:
     int space;
     int shield;
     string name;
+    string center;
     
     void repair(string center);
     void shift(string center, string destination);
