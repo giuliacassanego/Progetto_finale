@@ -39,11 +39,6 @@ Grid Player::getGrid()
 }
 
 
-void Player::hasHit()
-{
-    hits++;
-}
-
 int Player::getHits()
 {
     return hits;
