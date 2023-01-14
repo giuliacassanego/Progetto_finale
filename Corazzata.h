@@ -16,6 +16,7 @@ private:
     int space;
     int shield;
     string name;
+    string center;
 
     void fire(string origin, string target);
     int getShield();
