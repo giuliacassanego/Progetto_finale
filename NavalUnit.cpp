@@ -1,3 +1,10 @@
+/**
+ * @brief Definitions of functions of NavalUnit
+ * @param name
+ * @param size
+ * @param player
+ */
+
 #include <iostream>
 using namespace std;
 

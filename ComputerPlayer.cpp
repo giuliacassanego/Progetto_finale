@@ -1,3 +1,7 @@
+/**
+ * @brief Definitions of functions of ComputerPlayer
+ */
+
 #include "ComputerPlayer.h"
 #include "BattleShip.h"
 
@@ -47,6 +51,8 @@ Action ComputerPlayer::nextAction()
 			}
         }
 //   }
+	actionCoords.push_back(Coordinates::createString(a.getSource(), a.getTarget()));
+	cout << "size actionCoords " << actionCoords.size() << endl;
     return a;
 }
 

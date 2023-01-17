@@ -1,3 +1,8 @@
+/**
+ * @brief Definitions of functions of SupportVessel
+ * @param target
+ */
+
 #include <iostream>
 
 #include "SupportVessel.h"

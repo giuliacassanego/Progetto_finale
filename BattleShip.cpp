@@ -1,3 +1,8 @@
+/**
+ * @author Giulia Cassanego
+ * @brief Definitions of functions of BattleShip
+ */
+
 #include <iostream>
 
 #include "BattleShip.h"

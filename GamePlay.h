@@ -1,7 +1,10 @@
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
 
+#include <fstream>
+
 #include "Player.h"
+
 
 enum PlayMode 
 {
@@ -13,7 +16,7 @@ class GamePlay
 {
 private:
 	PlayMode mode;
-	
+	ofstream logFile;
 	int start();
 	
 public:

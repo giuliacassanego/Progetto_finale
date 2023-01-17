@@ -1,3 +1,7 @@
+/**
+ * @brief Definitions of functions of GamePlay
+ */
+
 #include <cstdlib>
 #include <ctime>
 
@@ -9,6 +13,8 @@ using namespace std;
 
 void GamePlay::playGame()
 {
+	logFile.open("./log.txt");
+	
 	switch(mode)
 	{
 		case PC:
@@ -16,9 +22,12 @@ void GamePlay::playGame()
 			HumanPlayer p1("Player1");
 			cout << endl << p1.getName() <<"'s grid:"<< endl<< p1.getGrid(); 
 			ComputerPlayer p2("Player2");
+			
+			logFile << "Posizioni player1\n" << p1.getInitPos() << "\n";
+			logFile << "Posizioni player2\n" << p2.getInitPos() << "\n";
+			
 			p1.setOpponent(&p2);
 			p2.setOpponent(&p1);
-			//Action a;
 			
 			int first = start();
 			Player* active;
@@ -31,6 +40,8 @@ void GamePlay::playGame()
 				active = &p2;
 			}
 
+			logFile << "The first action is of " << active->getName() <<  "\n";
+
 			try{
 				int n = 0;
 				while(n < 6)
@@ -38,6 +49,8 @@ void GamePlay::playGame()
 					cout << endl << "Game turn of " << active->getName() << endl;
 					Action a = active->nextAction();
 					active->play(a);
+					
+					logFile << active->getActionCoords();
 				
 					if(a.getType() != CLEAR && a.getType() != SHOW)
 					{
@@ -66,12 +79,17 @@ void GamePlay::playGame()
 			cout << p1.getName() <<"'s grid:"<< endl<< p1.getGrid(); 
 			ComputerPlayer p2("Player2");
 			cout << p2.getName() <<"'s grid:"<< endl<< p2.getGrid(); 
+			
+			logFile << "Posizioni player1\n" << p1.getInitPos() << "\n";
+			logFile << "Posizioni player2\n" << p2.getInitPos() << "\n";
+			
 			p1.setOpponent(&p2);
 			p2.setOpponent(&p1);
-			//Action a;
 			
 			int first = start();
 			Player* active = (first == 1 ? &p1 : &p2);
+			
+			logFile << "The first action is of " << active->getName() <<  "\n";
   
 			try{
 				int n = 0;
@@ -80,6 +98,8 @@ void GamePlay::playGame()
 					cout << "Game turn of " << active->getName() << endl;
 					Action a = active->nextAction();
 					active->play(a);
+					
+					logFile << active->getActionCoords();
 					
 					cout << active->getName() << "'s grid: " << endl << active->getGrid();
 
@@ -101,6 +121,7 @@ void GamePlay::playGame()
 		default:
 			break;
 	}
+	logFile.close();
 }
 
 int GamePlay::start()

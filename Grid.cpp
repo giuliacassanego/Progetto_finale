@@ -1,4 +1,7 @@
-//Cassanego Giulia 2032560
+/**
+ * @brief Definitions of functions of Grid
+ * @param pos
+ */
 
 #include <ostream>
 #include <stdio.h>

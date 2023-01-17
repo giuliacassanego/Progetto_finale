@@ -1,3 +1,8 @@
+/**
+ * @brief Definitions of functions of Submarine
+ * @param target
+ */
+
 #include <iostream>
 
 #include "Submarine.h"

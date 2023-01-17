@@ -1,16 +1,20 @@
-//Angelica Zonta 2032570
+#include <fstream>
 
-#include "replay.h"
+#include "GamePlay.h"
 
-
-
-int main(int argc, char *argv[])
+int main(int argc, char** argv)
 {
-    //argc = intero contenunte il numero di elmenti che può contenute argv[]
-    //argv = intero di stringhe
-    
-    
-
-
- return 0;
+	if(argc < 3 || argc > 4)
+	{
+		throw invalid_argument("Invalid number of arguments");
+	}
+	if(argc == 3)
+	{
+		
+	}
+	else if(argc == 4)
+	{
+		
+	}
+	return 0;
 }

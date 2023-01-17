@@ -16,7 +16,8 @@ protected:
     int hits; //numero dei colpi andati a segno
     bool win;
 	vector<NavalUnit*> units;
-	
+	vector<string> initPos;	//poppa e prua nell'insert
+	vector<string> actionCoords;	//source e target per azioni
 	Player *opponent;
 	Grid grid;
 
@@ -47,6 +48,8 @@ public:
 	
 	vector<Coordinates> scan(Coordinates center);
 	
+	string getInitPos();
+	string getActionCoords();
 };
 
 #endif

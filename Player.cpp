@@ -1,4 +1,8 @@
-//Cassanego Giulia
+/**
+ * @brief Definitions of functions of Player
+ * @param name
+ */
+
 #include <iostream>
 #include <stdexcept>
 
@@ -40,6 +44,7 @@ void Player::setUnitPosition(NavalUnit* unit, Coordinates bow, Coordinates stern
 {
 	unit->setPosition(bow, stern);
 	grid.insert(unit);
+	initPos.push_back(Coordinates::createString(bow, stern, unit->getShield()));
 }
 
 NavalUnit* Player::findUnit(Coordinates center)
@@ -144,4 +149,24 @@ Player* Player::checkWin()
 		return this;
 	}
 	return opponent;
+}
+
+string Player::getInitPos()
+{
+	string s;
+	for(int i = 0; i < initPos.size(); i++)
+	{
+		s += initPos[i] + "\n";
+	}
+	return s;
+}
+
+string Player::getActionCoords()
+{
+	string s;
+	for(int i = 0; i < actionCoords.size(); i++)
+	{
+		s += actionCoords[i] + "\n";
+	}
+	return s;
 }

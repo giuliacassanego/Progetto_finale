@@ -1,3 +1,7 @@
+/**
+ * @brief Definitions of functions of HumanPlayer
+ */
+
 #include "HumanPlayer.h"
 
 Action HumanPlayer::nextAction()
@@ -19,12 +23,16 @@ Action HumanPlayer::nextAction()
 		{
 			cout << "Command AA AA" << endl;
 			a = Action(CLEAR);
+			actionCoords.push_back("AA AA");
+			cout << "size actionCoords " << actionCoords.size() << endl;
 			correct = true;
 		}
 		else if(command1 == "XX" && command2 == "XX")
 		{
 			cout << "Command XX XX" << endl;
 			a = Action(SHOW);
+			actionCoords.push_back("XX XX");
+			cout << "size actionCoords " << actionCoords.size() << endl;
 			correct = true;
 		}
 		else
@@ -44,17 +52,21 @@ Action HumanPlayer::nextAction()
 						if(symbol == 'C' || symbol == 'c')
 						{
 							a = Action(source, target);
+							actionCoords.push_back(Coordinates::createString(a.getSource(), a.getTarget()));
+							cout << "size actionCoords " << actionCoords.size() << endl;
 							correct = true;
 						}
 						else if(cell2.isVoid())
 						{
 							a = Action(source, target);
+							actionCoords.push_back(Coordinates::createString(a.getSource(), a.getTarget()));
+							cout << "size actionCoords " << actionCoords.size() << endl;
 							correct = true;
 						}
 					}
 					catch(invalid_argument e) {cout << e.what() << endl;}
 				}
-				else
+				else	//DA CAPIRE al max aggiungere actionCoords
 				{
 					try {
 						a = Action(source, target);
