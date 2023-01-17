@@ -1,40 +1,106 @@
-//Angelica Zonta 2032570
-
-#include "GamePlay.h"
-#include "Grid.h"
-#include "Computer.h"
-#include "sottomarino.h"
-#include "NaveSupporto.h"
-#include "Sottomarino.h"
-
 #include <cstdlib>
 #include <ctime>
 
-//GamePlay::GamePlay(){}
+#include "GamePlay.h"
+#include "ComputerPlayer.h"
+#include "HumanPlayer.h"
 
-GamePlay::GamePlay(Computer playerC, Player playerP)
-{
-    playerC = Computer("player1");
-    playerP = Player("player2");
-}
+using namespace std;
 
-GamePlay::GamePlay(Computer playerC1, Computer playerC2);
+void GamePlay::playGame()
 {
-    playerC1 = Computer("player1");
-    playerC2 = Computer("player2");
-}
+	switch(mode)
+	{
+		case PC:
+		{
+			HumanPlayer p1("Player1");
+			cout << endl << p1.getName() <<"'s grid:"<< endl<< p1.getGrid(); 
+			ComputerPlayer p2("Player2");
+			p1.setOpponent(&p2);
+			p2.setOpponent(&p1);
+			//Action a;
+			
+			int first = start();
+			Player* active;
+			if(first == 1)
+			{
+				active = &p1;
+			}
+			else
+			{
+				active = &p2;
+			}
 
-/*
-~GamePlay() //distruttore che elimina oggetto creato alla fine edella partita
-{
-    
-}
-*/
+			try{
+				int n = 0;
+				while(n < 6)
+				{
+					cout << endl << "Game turn of " << active->getName() << endl;
+					Action a = active->nextAction();
+					active->play(a);
+				
+					if(a.getType() != CLEAR && a.getType() != SHOW)
+					{
+						if(active == &p1)
+						{
+							active = &p2;
+						}
+						else
+						{
+							active = &p1;
+						}
+						n++;
+					}
+				}
+				cout << p1.checkWin()->getName() << " has won :) " << endl;
+			}
+			catch(invalid_argument e)
+			{
+				cout << e.what() << endl;
+			}
+			break;
+		}
+		case CC:
+		{
+			ComputerPlayer p1("Player1");
+			cout << p1.getName() <<"'s grid:"<< endl<< p1.getGrid(); 
+			ComputerPlayer p2("Player2");
+			cout << p2.getName() <<"'s grid:"<< endl<< p2.getGrid(); 
+			p1.setOpponent(&p2);
+			p2.setOpponent(&p1);
+			//Action a;
+			
+			int first = start();
+			Player* active = (first == 1 ? &p1 : &p2);
+  
+			try{
+				int n = 0;
+				while(n < 6)
+				{       
+					cout << "Game turn of " << active->getName() << endl;
+					Action a = active->nextAction();
+					active->play(a);
+					
+					cout << active->getName() << "'s grid: " << endl << active->getGrid();
 
-//da fare con template perchè posso inserire sia computer cheplayer
-void GamePlay::hasHit()
-{
-    hits++;
+					active = (active == &p1 ? &p2 : &p1);
+
+					//if(a.getType() != CLEAR)
+					//{
+						n++;
+					//}
+				}
+				cout << p1.checkWin()->getName() << " has won :) " << endl;
+			}
+			catch(invalid_argument e)
+			{
+				cout << e.what() << endl;
+			}
+			break;
+		}
+		default:
+			break;
+	}
 }
 
 int GamePlay::start()
@@ -42,67 +108,4 @@ int GamePlay::start()
     srand(time(NULL));
     int n = rand()%2+1; //numero casuale da 1 a 2
     return n;
-}
-
-
-Player::Player GamePlay::getPlayer1()
-{
-    return player1;
-}
-
-Player::Player GamePlay::getPlayer2()
-{
-    return player2;
-}
-
-//mossa da fare
-void GamePlay::randomAction()
-{
-    srand(time(NULL));
-    int n = rand()%3+1;
-    if(n==1)
-    {
-        int c = rand()%3+1;
-        if(c==1)
-        {
-            
-        }
-        //faccio esegure l'azione alla corazzata che esce in c
-    } 
-    else if(n==2)
-    {
-        int c = rand()%3+1;
-        //faccio eseguire azione alla nave che esce in n
-    }
-    else{
-        int c = rand()%2+1;
-        //faccio eseguire azione al sottomarino che esce in n
-    }
-    
-}
-
-int GamePlay::calcShield(Player p)
-{
-    return (p.getCor1().getShield() + p.getCor2().getShield()+p.getCor3().getShield() + p.getNave1().getShield() + p.getNave2().getShield() + p.getNave3().getShield() + p.getSub1().getShield() + p.getSub2().getShield());
-}
-
-void GamePlay::checkWin(Player p1, Player p2)
-{    
-    if(calcShield(p1) > calcShield(p2))
-    {
-        p1.hasWin();
-    }
-    else{
-        p2.hasWin();
-    }
-}
-
-bool GamePlay::checkAffondato()
-{
-    if(this->getShield() ==0)
-    {
-        this->clear();
-        return true;
-    }
-    return false;
 }

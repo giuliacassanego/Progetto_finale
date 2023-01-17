@@ -1,90 +1,147 @@
-//Cassanego Giulia 2032560
-
+//Cassanego Giulia
 #include <iostream>
 #include <stdexcept>
 
 #include "Player.h"
 #include "Grid.h"
-#include "Corazzata.h"
-#include "NaveSupporto.h"
-#include "Sottomarino.h"
+#include "BattleShip.h"
+#include "SupportVessel.h"
+#include "Submarine.h"
 
 using namespace std;
 
-Player::Player(){}
-
-Player::Player(string n)
+Player::Player(string name)
 {
-    hits=0; 
+	n = name;
+    hits = 0; 
     win = false;
-    
-    Corazzata corazzata1(n);
-    Corazzata corazzata2(n);
-    Corazzata corazzata3(n);
-    
-    NaveSupporto nave1(n);
-    NaveSupporto nave2(n);
-    NaveSupporto nave3(n);
-    
-    Sottomarino sottomarino1(n);
-    Sottomarino sottomarino2(n);
-    
-    Grid grid1;
-    
 }
 
-Grid Player::getGrid()
+NavalUnit* Player::addUnit(NavalUnitType type, string name)	//piazza unità, specifico per human chiede dove
 {
-    return grid1;
+	NavalUnit* entry;
+	switch(type)
+	{
+		case BATTLESHIP:
+			entry = new BattleShip(name, this);
+			break;
+		case SUPPORTVESSEL:
+			entry = new SupportVessel(name, this);
+			break;
+		case SUBMARINE:
+			entry = new Submarine(name, this);
+			break;
+	}
+	units.push_back(entry);
+	return entry;
 }
 
-
-int Player::getHits()
+void Player::setUnitPosition(NavalUnit* unit, Coordinates bow, Coordinates stern)
 {
-    return hits;
+	unit->setPosition(bow, stern);
+	grid.insert(unit);
 }
 
-void Player::hasWin()
+NavalUnit* Player::findUnit(Coordinates center)
 {
-    win = true;
+	for(int i = 0; i < units.size(); i++)
+	{
+		if(units[i]->getCenter() == center)
+		{
+			return units[i];
+		}
+	}
+	return nullptr;
 }
 
-Corazzata Player::getCor1()
+void Player::play(Action action)	//fa prossima mossa, chiama move,fire,ecc
 {
-	return corazzata1;
+	switch(action.getType())
+	{
+		case UNIT_ACTION:
+		{
+			NavalUnit *unit = findUnit(action.getSource());
+			
+            if(unit == nullptr || !action.getTarget().isValid())
+			{
+				throw invalid_argument("Invalid source");
+			}
+			unit->action(action.getTarget());
+			break;
+		}
+		case CLEAR:
+		{
+			this->getGrid().deleteSonar();
+			break;
+		}
+		case SHOW:
+			cout << getGrid();
+			break;
+		default:
+			break;
+	}
 }
 
-Corazzata Player::getCor2()
+bool Player::checkHit(Coordinates pos)
 {
-	return corazzata2;
+	GridCell& cell = getGrid().getDefense(pos);
+	if(cell.isVoid())
+	{
+		return false;
+	}
+	cell.getUnit()->hit(pos);
+	if(cell.getUnit()->isSunk())
+	{
+		getGrid().clear(cell.getUnit());
+	}
+	return true;
 }
 
-Corazzata Player::getCor3()
+bool Player::hitOpponent(Coordinates target)
 {
-	return corazzata3;
+	return opponent->checkHit(target);
 }
 
-NaveSupporto Player::getNave1()
+vector<Coordinates> Player::scan(Coordinates center)
 {
-	return nave1;
+	vector<Coordinates> positions;
+	for(int i = (center.getX()-2); i <= (center.getX()+2); i++)
+	{
+		for(int j = (center.getY()-2); j <= (center.getY()+2); j++)
+		{
+			try
+			{
+				if(Coordinates(i,j).isValid())
+				{
+					GridCell& cell = opponent->getGrid().getDefense(Coordinates(i, j));
+					if(!(cell.isVoid()))
+					{
+						positions.push_back(Coordinates(i,j));
+					}
+				}
+			
+			}
+			catch(invalid_argument e) {}
+		}
+	}
+	return positions;
 }
 
-NaveSupporto Player::getNave2()
+int Player::getTotalShield()
 {
-	return nave2;
+	int n = 0;
+	for(int i = 0; i < units.size(); i++)
+	{
+		n += units[i]->getShield();
+	}
+	return n;
 }
 
-NaveSupporto Player::getNave3()
+Player* Player::checkWin()
 {
-	return nave3;
-}
-
-Sottomarino Player::getSub1()
-{
-	return sottomarino1;
-}
-
-Sottomarino Player::getSub2()
-{
-	return sottomarino2;
+	if(this->getTotalShield() > opponent->getTotalShield())
+	{
+		return this;
+	}
+	return opponent;
 }
