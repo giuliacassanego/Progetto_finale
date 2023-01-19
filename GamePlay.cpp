@@ -1,6 +1,7 @@
 /**
- * @brief Definitions of functions of GamePlay
- */
+ * @author Giulia Cassanego 2032560
+ * @brief Definition of functions of GamePlay.h
+*/
 
 #include <cstdlib>
 #include <ctime>
