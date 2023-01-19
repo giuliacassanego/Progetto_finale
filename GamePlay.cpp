@@ -41,16 +41,26 @@ void GamePlay::playGame()
 			}
 
 			logFile << "The first action is of " << active->getName() <<  "\n";
-
+			int n = 0;
 			try{
-				int n = 0;
-				while(n < 6)
+				while(n < 10)
 				{
 					cout << endl << "Game turn of " << active->getName() << endl;
 					Action a = active->nextAction();
-					active->play(a);
+					if(a.getType() == SHOW)
+					{
+						actionCoords.push_back("XX XX");
+					}
+					else if(a.getType() == CLEAR)
+					{
+						actionCoords.push_back("AA AA");
+					}
+					else
+					{
+						actionCoords.push_back(Coordinates::createString(a.getSource(), a.getTarget()));
+					}
 					
-					logFile << active->getActionCoords();
+					active->play(a);
 				
 					if(a.getType() != CLEAR && a.getType() != SHOW)
 					{
@@ -71,6 +81,7 @@ void GamePlay::playGame()
 			{
 				cout << e.what() << endl;
 			}
+			logFile << getActionCoords();
 			break;
 		}
 		case CC:
@@ -91,15 +102,14 @@ void GamePlay::playGame()
 			
 			logFile << "The first action is of " << active->getName() <<  "\n";
   
+			int n = 0;
 			try{
-				int n = 0;
-				while(n < 6)
+				while(n < 10)
 				{       
 					cout << "Game turn of " << active->getName() << endl;
 					Action a = active->nextAction();
+					actionCoords.push_back(Coordinates::createString(a.getSource(), a.getTarget()));
 					active->play(a);
-					
-					logFile << active->getActionCoords();
 					
 					cout << active->getName() << "'s grid: " << endl << active->getGrid();
 
@@ -116,6 +126,7 @@ void GamePlay::playGame()
 			{
 				cout << e.what() << endl;
 			}
+			logFile << getActionCoords();
 			break;
 		}
 		default:
@@ -129,4 +140,14 @@ int GamePlay::start()
     srand(time(NULL));
     int n = rand()%2+1; //numero casuale da 1 a 2
     return n;
+}
+
+string GamePlay::getActionCoords()
+{
+	string s;
+	for(int i = 0; i < actionCoords.size(); i++)
+	{
+		s += actionCoords[i] + "\n";
+	}
+	return s;
 }
